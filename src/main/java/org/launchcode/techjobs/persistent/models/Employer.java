@@ -7,6 +7,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,11 +15,12 @@ import java.util.List;
 @Entity
 public class Employer extends AbstractEntity {
     @NotEmpty
-    @Length(max = 250)
+    @NotNull
+    @Size(max = 250)
     private String location;
 
     @OneToMany
-    @JoinColumn(name = "item_id")
+    @JoinColumn(name = "employer_id")
     private List<Job> jobs = new ArrayList<>();
 
     public Employer() {};
